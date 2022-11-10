@@ -30,18 +30,28 @@ export class Position {
         }
         const parts = fenNormalized.replace(/^\s*/, "").replace(/\s*$/, "").split(/\/|\s/)
         for (let part = 0; part < 8; part++) {
+            let character = "-";
             const row = parts[7 - part].replace(/\d/g, (str) => {
-                const numSpaces = parseInt(str)
                 let ret = ''
-                for (let i = 0; i < numSpaces; i++) {
-                    ret += '-'
+                const numOfChar = parseInt(str)
+                if (numOfChar == 9){
+                    character = "h"
+                    return ret
+                } 
+                for (let i = 0; i < numOfChar ; i++) {
+                    ret += character
+                }
+                if (numOfChar != 9){
+                    character = "-"
                 }
                 return ret
             })
             for (let c = 0; c < 8; c++) {
                 const char = row.substring(c, c + 1)
                 let piece = null
-                if (char !== '-') {
+                if (char == "h"){
+                    piece = "h"
+                } else if (char !== '-') {
                     if (char.toUpperCase() === char) {
                         piece = `w${char.toLowerCase()}`
                     } else {

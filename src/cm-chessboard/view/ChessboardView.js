@@ -204,7 +204,10 @@ export class ChessboardView {
 
         for (let i = 0; i < 64; i++) {
             const index = this.chessboard.state.orientation === COLOR.white ? i : 63 - i
-            const squareColor = ((9 * index) & 8) === 0 ? 'black' : 'white'
+            let squareColor = ((9 * index) & 8) === 0 ? 'black' : 'white'
+            if (this.chessboard.state.position.squares[i] == "h"){
+                squareColor = "hidden"
+            }
             const fieldClass = `square ${squareColor}`
             const point = this.squareToPoint(Position.indexToSquare(index))
             const squareRect = Svg.addElement(this.boardGroup, "rect", {
