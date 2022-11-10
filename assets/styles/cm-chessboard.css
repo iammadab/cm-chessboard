@@ -64,6 +64,10 @@
 .cm-chessboard.default .board .square.black {
   fill: #c5a076; }
 
+.cm-chessboard.default .board .square.hidden{
+  fill: #909090;
+}
+
 .cm-chessboard.default.border-type-thin .board .border {
   stroke: #c5a076;
   stroke-width: 0.7%;
