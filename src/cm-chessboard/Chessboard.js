@@ -98,8 +98,8 @@ export class Chessboard {
         for (const extensionData of this.props.extensions) {
             this.extensions.push(new extensionData.class(this, extensionData.props))
         }
-        this.view.redrawBoard()
         this.state.position = new Position(this.props.position)
+        this.view.redrawBoard()
         this.view.redrawPieces()
         this.state.invokeExtensionPoints(EXTENSION_POINT.positionChanged)
     }
